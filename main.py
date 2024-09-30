@@ -1,3 +1,4 @@
+import uvicorn
 from g4f.client import Client
 from starlette.responses import JSONResponse
 from fastapi import FastAPI, Header, HTTPException
@@ -53,3 +54,4 @@ def generate(request: AIModel, token: str = Depends(oauth2_scheme)):
         "status": 500
       }
     )
+

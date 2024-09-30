@@ -1,6 +1,7 @@
 description = """
 ChimichangApp API helps you do awesome stuff. 🚀
 
+fastapi dev main.py
 ## Items
 
 You can **read items**.
