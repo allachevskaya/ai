@@ -1,3 +1,5 @@
+import logging
+
 import uvicorn
 from g4f.client import Client
 from starlette.responses import JSONResponse
@@ -22,10 +24,12 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 class AIModel(BaseModel):
   prompt: str = Field(default=None, examples=["Сколько букв в слове мама"])
+  project_name: str = Field(default='App', examples=["ski auto-posting"])
 
 
 @app.post("/ai")
 def generate(request: AIModel, token: str = Depends(oauth2_scheme)):
+  logging.debug(request.project_name)
   # Проверка токена (можно добавить логику валидации)
   if token != "expected_token":
     raise HTTPException(
@@ -54,4 +58,3 @@ def generate(request: AIModel, token: str = Depends(oauth2_scheme)):
         "status": 500
       }
     )
-
