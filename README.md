@@ -1,2 +1,4 @@
-pip install "fastapi[standard]"
-fastapi dev main.py
+
+
+# Documents 
+http://185.233.187.195:8000/docs
