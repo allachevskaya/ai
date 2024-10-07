@@ -14,7 +14,9 @@ app = FastAPI(
   summary="KM gpt",
   version="0.0.1",
 )
-client = Client()
+client = Client(
+  api_key="sk-Bsk9GDRrovs6Lk0hoouKL2HYSAMBvxyK3l9h051u4NjM1E5I"
+)
 
 # Схема OAuth2 для работы с токеном
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -35,7 +37,7 @@ def generate(request: AIModel, token: str = Depends(oauth2_scheme)):
 
   try:
     response = client.chat.completions.create(
-      api_key="sk-Bsk9GDRrovs6Lk0hoouKL2HYSAMBvxyK3l9h051u4NjM1E5I",
+
       model="gpt-4o",
       messages=[{"role": "user", "content": request.prompt}],
     )
@@ -55,4 +57,3 @@ def generate(request: AIModel, token: str = Depends(oauth2_scheme)):
         "status": 500
       }
     )
-
