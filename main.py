@@ -35,6 +35,7 @@ def generate(request: AIModel, token: str = Depends(oauth2_scheme)):
 
   try:
     response = client.chat.completions.create(
+      api_key="sk-Bsk9GDRrovs6Lk0hoouKL2HYSAMBvxyK3l9h051u4NjM1E5I",
       model="gpt-4o",
       messages=[{"role": "user", "content": request.prompt}],
     )
